@@ -1,4 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { isDevelopment } from '~/utils/environment.js'
 import {
   persistStore,
   persistReducer,
@@ -10,8 +11,11 @@ import {
   REGISTER
 } from 'redux-persist'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
 import userReducer from './user/userSlice'
+
+if (isDevelopment) {
+  // AsyncStorage.clear()
+}
 
 const rootReducer = combineReducers({
   user: userReducer

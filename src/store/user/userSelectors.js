@@ -5,5 +5,5 @@ export const selectUser = state => {
 }
 
 export const selectIsAuth = createSelector([selectUser], user => {
-  return Object.keys(user).length !== 0
+  return user.hasOwnProperty('id')
 })

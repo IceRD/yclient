@@ -22,7 +22,32 @@
     "size-medium": 40,
     "size-large": 48,
     "size-giant": 56,
-    "border-radius": 8,
+    "border-radius": 16,
     "border-width": 1
+  },
+
+  "components": {
+    "ListItem": {
+      "meta": {
+        "scope": "all",
+        "parameters": {
+          "borderRadius": {
+            "type": "number"
+          }
+        }
+      },
+      "appearances": {
+        "dark": {
+          "mapping": {
+            "backgroundColor": "background-basic-color-2",
+            "state": {
+              "active": {
+                "backgroundColor": "color-basic-transparent-active"
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

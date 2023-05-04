@@ -1,4 +1,10 @@
 export { default as HomeScreen } from './HomeScreen'
 export { default as AuthScreen } from './AuthScreen'
-export { default as ProfileScreen } from './ProfileScreen'
 export { default as AboutScreen } from './AboutScreen'
+
+export { default as ProfileScreen } from './ProfileScreen'
+export { default as PersonalDataScreen } from './PersonalDataScreen'
+export { default as ChangePasswordScreen } from './ChangePasswordScreen'
+export { default as LoyaltyCardsScreen } from './LoyaltyCardsScreen'
+export { default as SubscriptionCardsScreen } from './SubscriptionCardsScreen'
+export { default as CertificateCardsScreen } from './CertificateCardsScreen'

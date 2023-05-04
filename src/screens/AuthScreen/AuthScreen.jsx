@@ -7,22 +7,17 @@ import {
   Tab,
   TabView
 } from '@ui-kitten/components'
-
+import { globalStyles } from '~/theme'
 import { AuthEmail, AuthPhone } from '~/components'
-import api from '~/api'
 
 export default function AuthScreen() {
-  const styles = useStyleSheet(themedStyles)
+  const styles = useStyleSheet({ ...globalStyles, ...themedStyles })
 
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  useEffect(() => {
-    api.user.authByCode()
-  }, [])
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Layout style={styles.wrapper}>
+      <Layout style={{ flex: 1, paddingTop: 16 }}>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -56,9 +51,6 @@ export default function AuthScreen() {
 }
 
 const themedStyles = StyleService.create({
-  wrapper: {
-    flex: 1
-  },
   logoContainer: {
     marginBottom: 24,
     paddingHorizontal: 16
@@ -71,7 +63,7 @@ const themedStyles = StyleService.create({
     backgroundColor: 'color-basic-900',
     paddingVertical: 0,
     height: 36,
-    borderRadius: 8,
+    borderRadius: 16,
     marginHorizontal: 16,
     marginBottom: 24
   },
@@ -82,6 +74,6 @@ const themedStyles = StyleService.create({
     backgroundColor: 'color-basic-1000',
     padding: 0,
     margin: 0,
-    borderRadius: 8
+    borderRadius: 16
   }
 })

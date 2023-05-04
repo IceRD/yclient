@@ -47,13 +47,13 @@
   "color-warning-700": "#B7921E",
   "color-warning-800": "#937213",
   "color-warning-900": "#7A5A0B",
-  "color-danger-100": "#FFE8DE",
-  "color-danger-200": "#FFCCBE",
-  "color-danger-300": "#FFAA9E",
-  "color-danger-400": "#FF8B86",
-  "color-danger-500": "#FF5E66",
-  "color-danger-600": "#DB4459",
-  "color-danger-700": "#B72F4E",
-  "color-danger-800": "#931D43",
-  "color-danger-900": "#7A123C"
+  "color-danger-100": "#FDE2DA",
+  "color-danger-200": "#FBBFB6",
+  "color-danger-300": "#F4938F",
+  "color-danger-400": "#E97076",
+  "color-danger-500": "#DB4459",
+  "color-danger-600": "#BC3151",
+  "color-danger-700": "#9D224A",
+  "color-danger-800": "#7F1541",
+  "color-danger-900": "#690D3C"
 }

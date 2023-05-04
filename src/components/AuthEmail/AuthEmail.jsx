@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { View, TouchableWithoutFeedback } from 'react-native'
 import {
   Layout,
-  Card,
   Input,
   Button,
   Text,
@@ -11,19 +10,19 @@ import {
   StyleService,
   Icon
 } from '@ui-kitten/components'
+import { Spinner } from '~/components'
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from '~/store/user/userSlice'
-import { selectUser, selectIsAuth } from '~/store/user/userSelectors'
+import { authByEmail } from '~/store/user/userReducers'
 
 export default function AuthEmail() {
   const styles = useStyleSheet(themedStyles)
   const dispatch = useDispatch()
-  const user = useSelector(selectUser)
-  const isAuth = useSelector(selectIsAuth)
+
+  const { isLoading, errors } = useSelector(state => state.user)
 
   const [checked, setChecked] = useState(false)
-  const [email, setEmail] = useState(false)
-  const [password, setPassword] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [secureTextEntry, setSecureTextEntry] = React.useState(true)
 
   const toggleSecureEntry = () => {
@@ -37,20 +36,20 @@ export default function AuthEmail() {
   )
 
   const handlerSignIn = () => {
-    const user = { email, password }
-    dispatch(setUser({ user }))
+    dispatch(authByEmail({ email, password }))
   }
-
-  useEffect(() => {
-    // console.log(isAuth)
-    // console.log(user)
-  }, [user])
 
   return (
     <Layout level="2" style={styles.container}>
       <View style={styles.text}>
         <Text>Если у вас уже есть логин и пароль, введите их ниже.</Text>
       </View>
+
+      {errors && (
+        <View style={styles.text}>
+          <Text style={styles.errors}>{errors}</Text>
+        </View>
+      )}
 
       <Input
         value={email}
@@ -82,14 +81,19 @@ export default function AuthEmail() {
         </CheckBox>
       </View>
 
-      <Button onPress={handlerSignIn}>Получить код</Button>
+      <Button
+        onPress={handlerSignIn}
+        accessoryLeft={isLoading && <Spinner size="small" />}
+        disabled={isLoading}>
+        Войти
+      </Button>
     </Layout>
   )
 }
 
 const themedStyles = StyleService.create({
   text: {
-    marginBottom: 32
+    marginBottom: 24
   },
   email: {
     marginBottom: 24
@@ -103,6 +107,9 @@ const themedStyles = StyleService.create({
   container: {
     width: '100%',
     padding: 16,
-    borderRadius: 8
+    borderRadius: 16
+  },
+  errors: {
+    color: 'color-danger-500'
   }
 })

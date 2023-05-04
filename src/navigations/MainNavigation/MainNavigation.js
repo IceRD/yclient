@@ -1,11 +1,10 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { RouteComponents, defaultRoute } from '~/router/routes'
+import { RouteScreens, defaultRoute } from '~/router/routes'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
   BottomNavigation,
   BottomNavigationTab,
-  Icon,
   StyleService,
   useStyleSheet
 } from '@ui-kitten/components'
@@ -30,17 +29,14 @@ const BottomTabBar = ({ navigation, state }) => {
       selectedIndex={state.index}
       onSelect={index => navigation.navigate(state.routeNames[index])}
       style={styles.bottomNavigation}>
-      <BottomNavigationTab title={RouteComponents.home.title} icon={ListIcon} />
+      <BottomNavigationTab title={RouteScreens.home.title} icon={ListIcon} />
 
       <BottomNavigationTab
-        title={RouteComponents.profile.title}
+        title={RouteScreens.profile.title}
         icon={PersonIcon}
       />
 
-      <BottomNavigationTab
-        title={RouteComponents.about.title}
-        icon={InfoIcon}
-      />
+      <BottomNavigationTab title={RouteScreens.about.title} icon={InfoIcon} />
     </BottomNavigation>
   )
 }
@@ -50,15 +46,15 @@ const MainNavigation = () => (
     <Navigator
       tabBar={props => <BottomTabBar {...props} />}
       screenOptions={stackNavigatorOptions}
-      initialRouteName={profileStackName}>
+      initialRouteName={defaultRoute}>
       <Screen
-        name={RouteComponents.home.name}
-        component={RouteComponents.home.component}
+        name={RouteScreens.home.name}
+        component={RouteScreens.home.component}
       />
       <Screen name={profileStackName} component={ProfileStack} />
       <Screen
-        name={RouteComponents.about.name}
-        component={RouteComponents.about.component}
+        name={RouteScreens.about.name}
+        component={RouteScreens.about.component}
       />
     </Navigator>
   </NavigationContainer>

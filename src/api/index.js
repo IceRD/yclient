@@ -1,7 +1,7 @@
-import user from './user/user'
+import about from './about/about'
 
 const api = {
-  user
+  about
 }
 
 export default api
